@@ -5,25 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Алексей Мастер - Ремонт техники</title>
     <style>
-        /* 
-        ИНСТРУКЦИЯ ПО УСТАНОВКЕ ФОНОВОГО ИЗОБРАЖЕНИЯ:
-
-        1. Загрузите ваше изображение в папку с сайтом (например, в папку 'images/')
-        2. В CSS для body замените 'images/background.jpg' на путь к вашему файлу
-
-        РЕКОМЕНДАЦИИ ДЛЯ ФОНОВОГО ИЗОБРАЖЕНИЯ:
-        - Размер: минимум 1920x1080px для качественного отображения
-        - Формат: JPG (для фото) или PNG (для графики)
-        - Размер файла: оптимально до 500KB для быстрой загрузки
-        - Содержание: темное изображение или изображение с низким контрастом
-
-        ВАРИАНТЫ ФОНА:
-        - Фото мастерской/рабочего места
-        - Абстрактная техническая текстура
-        - Темный паттерн с элементами схем
-        - Размытое фото инструментов
-        */
-
+        
         * {
             margin: 0;
             padding: 0;
@@ -32,7 +14,7 @@
 
         body {
             font-family: 'Arial', sans-serif;
-            /* ВАРИАНТ 1: Фоновое изображение с затемнением */
+            
             background: 
                 linear-gradient(135deg, 
                     rgba(15, 15, 15, 0.85) 0%, 
@@ -40,17 +22,7 @@
                     rgba(45, 45, 45, 0.7) 50%, 
                     rgba(26, 26, 26, 0.75) 75%, 
                     rgba(15, 15, 15, 0.85) 100%),
-                url('2.jpeg'); /* ЗАМЕНИТЕ НА ПУТЬ К ВАШЕМУ ИЗОБРАЖЕНИЮ */
-            
-            /* ВАРИАНТ 2: Простое фоновое изображение (раскомментируйте если нужно)
-            background: url('images/background.jpg');
-            */
-            
-            /* ВАРИАНТ 3: Фон с паттерном (раскомментируйте если нужно)
-            background: 
-                linear-gradient(135deg, rgba(15, 15, 15, 0.9), rgba(26, 26, 26, 0.8)),
-                url('images/pattern.jpg');
-            */
+                url('2.jpeg'); 
             
             background-size: cover;
             background-position: center;
@@ -73,7 +45,7 @@
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(255, 107, 53, 0.2);
             padding: 15px 0;
-            position: fixed;
+            position: relative;
             width: 100%;
             top: 0;
             z-index: 1000;
@@ -820,7 +792,7 @@
             <div class="header-content">
                 <div class="logo">
                     <div class="master-photo">
-                        <!-- Можно заменить на: <img src="path/to/photo.jpg" alt="Алексей Мастер"> -->
+                        <!-- заменить на: <img src="path/to/photo.jpg" alt="Алексей Мастер"> -->
                         АМ
                     </div>
                     <div class="master-name">Алексей Мастер</div>
@@ -844,14 +816,9 @@
                     <a href="#contact" class="cta-btn">Заказать звонок</a>
                 </div>
                 <div class="hero-image fade-in-up">
-                    <!-- Замените src на путь к реальному фото мастера или рабочего места -->
+                    
                     <img src="1.jpeg" alt="Ремонт техники">
-                    <!-- 
-                    Пример использования реального изображения:
-                    <img src="images/master-workspace.jpg" alt="Рабочее место мастера">
-                    или
-                    <img src="images/repair-process.jpg" alt="Процесс ремонта">
-                    -->
+                    
                 </div>
             </div>
             
