@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Алексей Мастер - Ремонт техники</title>
+    <style>
+        /* 
+        ИНСТРУКЦИЯ ПО УСТАНОВКЕ ФОНОВОГО ИЗОБРАЖЕНИЯ:
+
+        1. Загрузите ваше изображение в папку с сайтом (например, в папку 'images/')
+        2. В CSS для body замените 'images/background.jpg' на путь к вашему файлу
+
+        РЕКОМЕНДАЦИИ ДЛЯ ФОНОВОГО ИЗОБРАЖЕНИЯ:
+        - Размер: минимум 1920x1080px для качественного отображения
+        - Формат: JPG (для фото) или PNG (для графики)
+        - Размер файла: оптимально до 500KB для быстрой загрузки
+        - Содержание: темное изображение или изображение с низким контрастом
+
+        ВАРИАНТЫ ФОНА:
+        - Фото мастерской/рабочего места
+        - Абстрактная техническая текстура
+        - Темный паттерн с элементами схем
+        - Размытое фото инструментов
+        */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            /* ВАРИАНТ 1: Фоновое изображение с затемнением */
+            background: 
+                linear-gradient(135deg, 
+                    rgba(15, 15, 15, 0.85) 0%, 
+                    rgba(26, 26, 26, 0.75) 25%, 
+                    rgba(45, 45, 45, 0.7) 50%, 
+                    rgba(26, 26, 26, 0.75) 75%, 
+                    rgba(15, 15, 15, 0.85) 100%),
+                url('2.jpeg'); /* ЗАМЕНИТЕ НА ПУТЬ К ВАШЕМУ ИЗОБРАЖЕНИЮ */
+            
+            /* ВАРИАНТ 2: Простое фоновое изображение (раскомментируйте если нужно)
+            background: url('images/background.jpg');
+            */
+            
+            /* ВАРИАНТ 3: Фон с паттерном (раскомментируйте если нужно)
+            background: 
+                linear-gradient(135deg, rgba(15, 15, 15, 0.9), rgba(26, 26, 26, 0.8)),
+                url('images/pattern.jpg');
+            */
+            
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #ffffff;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, rgba(0,0,0,0.95) 0%, rgba(20,20,20,0.95) 50%, rgba(0,0,0,0.95) 100%);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 107, 53, 0.2);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .master-photo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff6b35, #ff8c42, #ffaa5a);
+            background-size: 200% 200%;
+            animation: gradientShift 3s ease infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .master-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .master-photo::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ff6b35, #ff8c42, #ffaa5a, #ff6b35);
+            border-radius: 50%;
+            z-index: -1;
+            animation: rotate 3s linear infinite;
+        }
+
+        .master-name {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .contacts {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .phone {
+            font-size: 20px;
+            background: linear-gradient(135deg, #ff6b35, #ff8c42);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            font-weight: bold;
+            position: relative;
+        }
+
+        .phone::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #ff6b35, #ff8c42);
+            transition: width 0.3s ease;
+        }
+
+        .phone:hover::before {
+            width: 100%;
+        }
+
+        .whatsapp-btn {
+            background: linear-gradient(135deg, #25d366, #20b358, #1da851);
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .whatsapp-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .whatsapp-btn:hover::before {
+            left: 100%;
+        }
+
+        .whatsapp-btn:hover {
+            background: linear-gradient(135deg, #20b358, #1da851, #128c7e);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            display: flex;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, 
+                rgba(26, 26, 26, 0.95) 0%, 
+                rgba(45, 45, 45, 0.9) 25%, 
+                rgba(35, 35, 35, 0.95) 50%, 
+                rgba(45, 45, 45, 0.9) 75%, 
+                rgba(26, 26, 26, 0.95) 100%),
+                radial-gradient(circle at 20% 80%, rgba(255, 107, 53, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 140, 66, 0.1) 0%, transparent 50%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(45deg, transparent 30%, rgba(255, 107, 53, 0.05) 50%, transparent 70%),
+                linear-gradient(-45deg, transparent 30%, rgba(255, 140, 66, 0.05) 50%, transparent 70%);
+            animation: backgroundShift 8s ease-in-out infinite;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-text .highlight {
+            background: linear-gradient(135deg, #ff6b35, #ff8c42, #ffaa5a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% 200%;
+            animation: gradientShift 3s ease infinite;
+        }
+
+        .hero-text p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .hero-image {
+            text-align: center;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 20px;
+            box-shadow: 
+                0 20px 40px rgba(0,0,0,0.3),
+                0 0 0 1px rgba(255, 107, 53, 0.2),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, 
+                rgba(255, 107, 53, 0.1) 0%, 
+                transparent 30%, 
+                transparent 70%, 
+                rgba(255, 140, 66, 0.1) 100%);
+            border-radius: 20px;
+            pointer-events: none;
+        }
+
+        .cta-btn {
+            background: linear-gradient(135deg, #ff6b35, #ff8c42, #ffaa5a);
+            color: white;
+            padding: 18px 45px;
+            text-decoration: none;
+            border-radius: 35px;
+            font-size: 18px;
+            font-weight: bold;
+            transition: all 0.4s ease;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s;
+        }
+
+        .cta-btn:hover::before {
+            left: 100%;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 
+                0 15px 35px rgba(255, 107, 53, 0.4),
+                0 5px 15px rgba(255, 107, 53, 0.2);
+            background: linear-gradient(135deg, #ff8c42, #ffaa5a, #ff6b35);
+        }
+
+        /* Services Icons */
+        .services-icons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 80px;
+        }
+
+        .service-icon {
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.08) 0%, 
+                rgba(255, 255, 255, 0.03) 50%, 
+                rgba(255, 255, 255, 0.08) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 107, 53, 0.2);
+            border-radius: 20px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, 
+                rgba(255, 107, 53, 0.1) 0%, 
+                transparent 50%, 
+                rgba(255, 140, 66, 0.1) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .service-icon:hover::before {
+            opacity: 1;
+        }
+
+        .service-icon:hover {
+            background: linear-gradient(135deg, 
+                rgba(255, 107, 53, 0.15) 0%, 
+                rgba(255, 140, 66, 0.1) 50%, 
+                rgba(255, 107, 53, 0.15) 100%);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(255, 107, 53, 0.2);
+            border-color: rgba(255, 107, 53, 0.4);
+        }
+
+        .service-icon-img {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #ff6b35, #ff8c42, #ffaa5a);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: 
+                0 8px 20px rgba(255, 107, 53, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-icon-img::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        /* Sections */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 50px;
+            background: linear-gradient(135deg, #ff6b35, #ff8c42, #ffaa5a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(135deg, #ff6b35, #ff8c42);
+            border-radius: 2px;
+        }
+
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            background: rgba(255, 107, 53, 0.1);
+            transform: translateY(-10px);
+        }
+
+        .service-card h3 {
+            color: #ff6b35;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+
+        /* Prices */
+        .prices-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .price-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .price-card:hover {
+            background: rgba(255, 107, 53, 0.1);
+            transform: translateY(-10px);
+        }
+
+        .price {
+            font-size: 32px;
+            color: #ff6b35;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        /* Reviews */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .review-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .review-card:hover {
+            background: rgba(255, 107, 53, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .review-photo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff6b35, #ff8c42);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .stars {
+            color: #ff6b35;
+            font-size: 18px;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.08) 0%, 
+                rgba(255, 255, 255, 0.03) 50%, 
+                rgba(255, 255, 255, 0.08) 100%);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 107, 53, 0.2);
+            padding: 50px;
+            border-radius: 25px;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-form::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, 
+                rgba(255, 107, 53, 0.05) 0%, 
+                transparent 50%, 
+                rgba(255, 140, 66, 0.05) 100%);
+            pointer-events: none;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #ff6b35, #ff8c42);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 18px;
+            border: 2px solid rgba(255, 107, 53, 0.2);
+            border-radius: 12px;
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.08) 0%, 
+                rgba(255, 255, 255, 0.03) 100%);
+            backdrop-filter: blur(10px);
+            color: white;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: rgba(255, 107, 53, 0.6);
+            background: linear-gradient(135deg, 
+                rgba(255, 107, 53, 0.1) 0%, 
+                rgba(255, 140, 66, 0.05) 100%);
+            box-shadow: 0 0 20px rgba(255, 107, 53, 0.2);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #ff6b35, #ff8c42, #ffaa5a);
+            color: white;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 35px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s;
+        }
+
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 
+                0 15px 35px rgba(255, 107, 53, 0.4),
+                0 5px 15px rgba(255, 107, 53, 0.2);
+            background: linear-gradient(135deg, #ff8c42, #ffaa5a, #ff6b35);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, 
+                rgba(0, 0, 0, 0.95) 0%, 
+                rgba(20, 20, 20, 0.9) 50%, 
+                rgba(0, 0, 0, 0.95) 100%);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 107, 53, 0.2);
+            padding: 60px 0 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 30% 20%, rgba(255, 107, 53, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(255, 140, 66, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+
+        .footer-section h3 {
+            background: linear-gradient(135deg, #ff6b35, #ff8c42);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-links a {
+            background: linear-gradient(135deg, #ff6b35, #ff8c42);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            font-size: 24px;
+            transition: all 0.3s ease;
+            padding: 10px;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .social-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(255, 140, 66, 0.1));
+            border-radius: 10px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .social-links a:hover::before {
+            opacity: 1;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-3px) scale(1.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-text h1 {
+                font-size: 36px;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .contacts {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes gradientShift {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            }
+            50% {
+                transform: translateX(100%) translateY(100%) rotate(45deg);
+            }
+            100% {
+                transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            }
+        }
+
+        @keyframes backgroundShift {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.8;
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="master-photo">
+                        <!-- Можно заменить на: <img src="path/to/photo.jpg" alt="Алексей Мастер"> -->
+                        АМ
+                    </div>
+                    <div class="master-name">Алексей Мастер</div>
+                </div>
+                <div class="contacts">
+                    <a href="tel:+79123456789" class="phone">+7 (912) 345-67-89</a>
+                    <a href="https://wa.me/79123456789" class="whatsapp-btn">WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text fade-in-up">
+                    <h1>РЕМОНТ <span class="highlight">И НАСТРОЙКА</span> ТЕХНИКИ</h1>
+                    <p>от диагностики до экономии</p>
+                    <p>Быстрый ремонт телефонов, ноутбуков и бытовой техники на дому и в мастерской</p>
+                    <a href="#contact" class="cta-btn">Заказать звонок</a>
+                </div>
+                <div class="hero-image fade-in-up">
+                    <!-- Замените src на путь к реальному фото мастера или рабочего места -->
+                    <img src="1.jpeg" alt="Ремонт техники">
+                    <!-- 
+                    Пример использования реального изображения:
+                    <img src="images/master-workspace.jpg" alt="Рабочее место мастера">
+                    или
+                    <img src="images/repair-process.jpg" alt="Процесс ремонта">
+                    -->
+                </div>
+            </div>
+            
+            <div class="services-icons">
+                <div class="service-icon">
+                    <div class="service-icon-img">📱</div>
+                    <h3>Телефоны</h3>
+                    <p>Замена экранов, диагностика, ремонт</p>
+                </div>
+                <div class="service-icon">
+                    <div class="service-icon-img">💻</div>
+                    <h3>Ноутбуки</h3>
+                    <p>Чистка, настройка, замена комплектующих</p>
+                </div>
+                <div class="service-icon">
+                    <div class="service-icon-img">🔧</div>
+                    <h3>Бытовая техника</h3>
+                    <p>Диагностика и ремонт на дому</p>
+                </div>
+                <div class="service-icon">
+                    <div class="service-icon-img">⚙️</div>
+                    <h3>Настройка ПО</h3>
+                    <p>Windows, macOS, установка программ</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="section" id="services">
+        <div class="container">
+            <h2>УСЛУГИ</h2>
+            <div class="services-grid">
+                <div class="service-card fade-in-up">
+                    <h3>Диагностика</h3>
+                    <p>Полная диагностика техники для выявления неисправностей. Определяем причину поломки и составляем план ремонта.</p>
+                </div>
+                <div class="service-card fade-in-up">
+                    <h3>Замена экранов</h3>
+                    <p>Замена разбитых экранов на телефонах и планшетах. Используем только качественные комплектующие с гарантией.</p>
+                </div>
+                <div class="service-card fade-in-up">
+                    <h3>Чистка / Пайка</h3>
+                    <p>Профессиональная чистка от пыли и грязи, пайка микросхем и компонентов. Восстановление после залития.</p>
+                </div>
+                <div class="service-card fade-in-up">
+                    <h3>Настройка ПО</h3>
+                    <p>Установка и настройка Windows, macOS, программного обеспечения. Оптимизация работы компьютера.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prices -->
+    <section class="section" id="prices">
+        <div class="container">
+            <h2>ЦЕНЫ</h2>
+            <div class="prices-grid">
+                <div class="price-card fade-in-up">
+                    <div class="price">от 500₽</div>
+                    <h3>Диагностика</h3>
+                    <p>Полная диагностика устройства</p>
+                </div>
+                <div class="price-card fade-in-up">
+                    <div class="price">от 2000₽</div>
+                    <h3>Замена экрана</h3>
+                    <p>Замена экрана телефона</p>
+                </div>
+                <div class="price-card fade-in-up">
+                    <div class="price">от 1500₽</div>
+                    <h3>Чистка ноутбука</h3>
+                    <p>Профессиональная чистка</p>
+                </div>
+                <div class="price-card fade-in-up">
+                    <div class="price">от 1000₽</div>
+                    <h3>Настройка ПО</h3>
+                    <p>Установка Windows/macOS</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews -->
+    <section class="section" id="reviews">
+        <div class="container">
+            <h2>ОТЗЫВЫ</h2>
+            <div class="reviews-grid">
+                <div class="review-card fade-in-up">
+                    <div class="review-header">
+                        <div class="review-photo">А</div>
+                        <div>
+                            <h4>Анна К.</h4>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p>Отличный мастер! Быстро диагностировал проблему с телефоном и заменил экран. Работа выполнена качественно, цена адекватная. Рекомендую!</p>
+                </div>
+                <div class="review-card fade-in-up">
+                    <div class="review-header">
+                        <div class="review-photo">М</div>
+                        <div>
+                            <h4>Михаил П.</h4>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p>Ноутбук не включался, думал уже выбросить. Алексей восстановил его за день! Теперь работает как новый. Спасибо за профессионализм!</p>
+                </div>
+                <div class="review-card fade-in-up">
+                    <div class="review-header">
+                        <div class="review-photo">Е</div>
+                        <div>
+                            <h4>Елена С.</h4>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p>Вызывала мастера на дом для ремонта стиральной машины. Приехал быстро, все починил на месте. Очень довольна сервисом!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="section" id="contact">
+        <div class="container">
+            <h2>ОСТАВИТЬ ЗАЯВКУ</h2>
+            <form class="contact-form fade-in-up" id="contactForm">
+                <div class="form-group">
+                    <label for="name">Ваше имя</label>
+                    <input type="text" id="name" name="name" placeholder="Введите ваше имя" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Телефон</label>
+                    <input type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__" required>
+                </div>
+                <div class="form-group">
+                    <label for="problem">Описание поломки</label>
+                    <textarea id="problem" name="problem" rows="4" placeholder="Опишите проблему с вашим устройством" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Отправить заявку</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <p>Телефон: +7 (912) 345-67-89</p>
+                    <p>Email: alexmaster@mail.ru</p>
+                </div>
+                <div class="footer-section">
+                    <h3>График работы</h3>
+                    <p>Пн-Пт: 9:00 - 20:00</p>
+                    <p>Сб-Вс: 10:00 - 18:00</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Адрес</h3>
+                    <p>г. Москва, ул. Примерная, 123</p>
+                    <p>Выезд на дом по городу</p>
+                </div>
+            </div>
+            <div class="social-links">
+                <a href="#" title="ВКонтакте">VK</a>
+                <a href="#" title="Telegram">TG</a>
+                <a href="#" title="WhatsApp">WA</a>
+            </div>
+            <p>&copy; 2025 Алексей Мастер. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const name = formData.get('name');
+            const phone = formData.get('phone');
+            const problem = formData.get('problem');
+            
+            // Simulate form submission
+            alert(`Спасибо, ${name}! Ваша заявка принята. Мы свяжемся с вами по номеру ${phone} в ближайшее время.`);
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Phone number formatting
+        document.getElementById('phone').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 0) {
+                if (value.length <= 1) {
+                    value = '+7 (' + value;
+                } else if (value.length <= 4) {
+                    value = '+7 (' + value.substr(1);
+                } else if (value.length <= 7) {
+                    value = '+7 (' + value.substr(1, 3) + ') ' + value.substr(4);
+                } else if (value.length <= 9) {
+                    value = '+7 (' + value.substr(1, 3) + ') ' + value.substr(4, 3) + '-' + value.substr(7);
+                } else {
+                    value = '+7 (' + value.substr(1, 3) + ') ' + value.substr(4, 3) + '-' + value.substr(7, 2) + '-' + value.substr(9, 2);
+                }
+            }
+            e.target.value = value;
+        });
+
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and sections
+        document.querySelectorAll('.service-card, .price-card, .review-card, .contact-form').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Header background change on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'linear-gradient(135deg, rgba(0,0,0,0.98) 0%, rgba(20,20,20,0.98) 50%, rgba(0,0,0,0.98) 100%)';
+                header.style.backdropFilter = 'blur(15px)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, rgba(0,0,0,0.95) 0%, rgba(20,20,20,0.95) 50%, rgba(0,0,0,0.95) 100%)';
+                header.style.backdropFilter = 'blur(10px)';
+            }
+        });
+    </script>
+</body>
+</html>
